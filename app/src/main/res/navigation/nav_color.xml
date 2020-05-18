@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/color_list_fragment">
+    <fragment
+        android:id="@+id/color_list_fragment"
+        android:name="com.ww.colors.view.ColorListFragment"
+        tools:layout="@layout/fragment_color_list">
+        <action android:id="@+id/action_color_list_fragment_to_color_detail_fragment"
+            app:destination="@id/color_detail_fragment"
+            app:exitAnim="@anim/alpha_out"
+            app:enterAnim="@anim/alpha_in"
+            app:popEnterAnim="@anim/alpha_in"
+            app:popExitAnim="@anim/alpha_out"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/color_detail_fragment"
+        android:name="com.ww.colors.view.ColorDetailFragment"
+        tools:layout="@layout/fragment_color_detail" >
+        <argument
+            android:name="colorId"
+            app:argType="string"/>
+    </fragment>
+
+</navigation>
