@@ -18,4 +18,17 @@ jobs:
       with:
         java-version: 1.8
     - name: Build with Gradle
-      run: ./gradlew build
+      run: chmod +x gradlew &&./gradlew assembleDebug
+      
+    - name: Upload APK
+      uses: actions/upload-artifact@v1
+      with:
+        name: app
+        path: app/build/outputs/apk/debug/colors-debug.apk
+    - name: Upload To Pgyer
+      uses: JantHsueh/upload-file-action@master
+      with:
+        url: https://www.pgyer.com/apiv2/app/upload
+        method: POST
+        forms: '{"_api_key":"56f04bac1b60039f4b7c2257846d99c7","buildInstallType":3}'
+        fileForms: '{"file":"app/build/outputs/apk/debug/colors-debug.apk"}'
