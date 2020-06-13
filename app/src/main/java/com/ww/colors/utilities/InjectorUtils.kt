@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.fragment.app.Fragment
 import com.ww.colors.data.AppDatabase
 import com.ww.colors.data.ColorRepository
+import com.ww.colors.viewmodels.ColorDetailViewModelFactory
 import com.ww.colors.viewmodels.ColorListViewModelFactory
 
 object InjectorUtils {
@@ -16,5 +17,9 @@ object InjectorUtils {
     fun provideColorListViewModelFactory(fragment: Fragment): ColorListViewModelFactory {
         val repository = getColorRepository(fragment.requireContext())
         return ColorListViewModelFactory(repository, fragment)
+    }
+    fun provideColorDetailViewModelFactory(fragment: Fragment,colorId:String): ColorDetailViewModelFactory {
+        val repository = getColorRepository(fragment.requireContext())
+        return ColorDetailViewModelFactory(repository,colorId, fragment)
     }
 }

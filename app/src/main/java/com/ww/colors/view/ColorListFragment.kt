@@ -13,7 +13,7 @@ import com.ww.colors.utilities.InjectorUtils
 import com.ww.colors.viewmodels.ColorListViewModel
 
 class ColorListFragment : Fragment() {
-    private val viewModel: ColorListViewModel by viewModels {
+    private val colorListViewModel: ColorListViewModel by viewModels {
         InjectorUtils.provideColorListViewModelFactory(this)
     }
 
@@ -33,7 +33,7 @@ class ColorListFragment : Fragment() {
     }
 
     private fun subscribeUI(adapter: ColorAdapter) {
-        viewModel.colors.observe(viewLifecycleOwner, Observer{ colors ->
+        colorListViewModel.colors.observe(viewLifecycleOwner, Observer{ colors ->
             adapter.submitList(colors)
         })
     }
